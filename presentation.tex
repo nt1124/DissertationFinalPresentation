@@ -1,0 +1,156 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[t, 12pt]{beamer}            % Generate slides
+%\documentclass[handout]{beamer}   % Generate handouts (6 slides to 1 page)
+%\documentclass[aspectratio=169]{beamer}  % Use widescreen 16:9 aspect ratio
+    % Possible aspect ratios are 16:9, 16:10, 14:9, 5:4, 4:3 (default) and 3:2
+    % (Remember to remove the colon)
+
+%\usetheme{UoB}
+%\usetheme[compress]{UoB}     % Compress the margins
+\usetheme[nourl]{UoB}        % Remove the footer with the URL
+%\usetheme[nowatermark]{UoB}  % Remove the watermark from the title page
+
+% Generate handouts with notes (3 slides + 3 notes to 1 page)
+%\mode<handout>{
+%  \pgfpagesuselayout{3 on 1 with notes}[a4paper,border shrink=10mm]
+%}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title[Secure Two Party Computation]{Secure Two Party Computation}
+\subtitle{A practical comparison of recent protocols}
+\author{Nick Tutte}
+\institute{University of Bristol}
+\date{15th May 2015}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\titlepage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Project Overview}
+	\begin{itemize}[<+->]
+		\item Secure Multiparty Computation is a long standing problem in cryptography.
+		\begin{itemize}
+			\item How can mutually distrusting parties collaborate compute a function without revealing their inputs?
+		\end{itemize}
+		\item A subset of this problem is Secure Two Party Computation (S2C).
+		\item Yao Garbled Circuits are one approach to S2C, but naive Yao Circuits only provide security against passive adversaries. 
+		\item Recently many protocols have been proposed to use Yao Circuits to provide security in the presence of active adversaries. 
+		\item Our aim was to implement some of these recent protocols so we could compare their performance.
+	\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Secure Multiparty Computation}
+	\begin{itemize}[<+->]
+		\item Given $n$ parties who each have an input $x_i$
+		\item Parties wish to compute a function $(y_1, ..., y_n) = f(x_1, ..., x_n)$
+		\item But they want the following security properties,
+		\begin{itemize}
+			\item Privacy - Participating parties only learn their output.
+			\item Correctness - Output is correct evaluation of the function \emph{given the inputs}.
+			\item Independence of inputs - Participating parties only learn their output.
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Yao's Protocol}
+	\begin{itemize}[<+->]
+		\item Proposed by Andrew Yao in 1986. Whilst it's primarily for Two Party computation it can be extended to Multiparty computation.
+		\item  The basic idea,
+		\begin{itemize}
+			\item One party is labelled the `Builder' and the other is the `Executor'.
+			\item The Builder constructs a binary circuit representing the function.
+			\item The Builder then `garbles' this circuit, encrypting it in such a way that it can be evaluated without revealing information about the inputs, and sends it to the Executor.
+			\item The Builder's inputs are hardcoded, the Executor's inputs are obtained by Oblivious Transfers.
+			\item Using these inputs the Executor can then evaluate the circuit and so the function.
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	\begin{block}{Oblivious Transfer}
+		\vspace{0.2cm}
+		\begin{figure}[!htb]
+			\centering
+			\begin{minipage}{0.45\textwidth}
+				\centering
+			\textbf{Receiver}\\
+				Inputs : $b \in \{0, 1\}$\\
+				Outputs : $x_b$\\
+			\end{minipage}
+			\begin{minipage}{0.45\textwidth}
+				\centering
+				\textbf{Sender}\\
+				Inputs : $x_0, x_1 \in \{0, 1\}^l$\\
+				Outputs : $\emptyset$\\
+			\end{minipage}
+		\end{figure}
+
+		Formal definition of the functionality of a one-out-of-two OT protocol. The Receiver should learn nothing about the value of $x_{1-b}$ and the Sender should learn nothing about $b$.
+	\end{block}
+
+	We will not dwell on the details of Oblivious Transfer, suffice to say it is possible, if anyone is interested in seeing a concrete protocol I suggest the Naor-Pinkas Oblivious Transfer.
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The Security of Yao's Protocol}
+	\begin{itemize}[<+->]
+		\item As already mentioned Yao Circuits are only secure in the presence of passive adversaries. \footnotemark
+		\item In naive Yao Circuits the Executor has no way to know if the circuit given to it by the Builder actually computes the function it purports to.
+		\item There are two main approaches to overcoming this,
+		\begin{itemize}
+			\item Cut and Choose.
+			\item Commit and Prove.
+		\end{itemize}
+	\end{itemize}
+	
+	\footnotetext[1]{For a formal proof of this see ``A Proof of Security of Yao's Protocol for Two-Party Computation'' by Lindell and Pinkas (2006) }
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Cut and Choose - Concept}
+	\begin{itemize}[<+->]
+		\item All three protocols we implemented are based on Cut and Choose.
+		\item The Builder now generates many garbled circuits and sends them to the Executor.
+		\item The Executor then picks a set of these circuits and asks the Builder to open them so they can be checked for correctness.
+		\item If all check circuits pass then the rest of the circuits are evaluated.
+		\item So a malicious Builder must now guess which circuits will be checked.
+	\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Cut and Choose - Issues}
+	\begin{itemize}[<+->]
+		\item Cut and Choose seems trivially simple, however it actually raises several new problems.
+	\end{itemize}
+
+\end{frame}
+
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
