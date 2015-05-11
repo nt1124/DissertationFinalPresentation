@@ -40,8 +40,9 @@
 		\item Our aim was to implement some of these recent protocols so we could compare their performance.
 	\end{itemize}
 \end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Secure Multiparty Computation}
 	\begin{itemize}[<+->]
 		\item Given $n$ parties who each have an input $x_i$
@@ -129,10 +130,147 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Cut and Choose - Issues}
 	\begin{itemize}[<+->]
-		\item Cut and Choose seems trivially simple, however it actually raises several new problems.
+		\item Cut and Choose seems trivially simple, however it actually raises several new problems. The main two are,
+		\begin{itemize}
+			\item Consistency of Builder's inputs.
+			\item Consistency of Executor's inputs.
+			\item Output determination.
+		\end{itemize}
 	\end{itemize}
 
 \end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Lindell-Pinkas 2010}
+	\begin{itemize}[<+->]
+		\item Based around a new primitive, a Cut and Choose Oblivious Transfer.
+		\item Using an elegant approach to consistency using Zero Knowledge proofs.
+		\item Half of the circuits are check circuits, the other half are evaluation circuits.
+		\item Return majority output of the evaluation circuits.
+		\item Statistical security $2^{-0.311 \cdot S}$  where $S$ is the number of circuits.
+		\item So we need $130$ circuits to achieve statistical security of $2^{-40}$.
+		%\begin{itemize}
+		%	\item  
+		%\end{itemize}
+	\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Lindell 2013}
+	\begin{itemize}[<+->]
+		\item Very similar to the Lindell-Pinkas 2010, uses the same basic ideas.
+		\item Modifies the Cut and Choose Oblivious Transfer.
+		\item Runs a small sub-computation (using Lindell-Pinkas) such that only one circuit needs to be correct.
+		\item So it's expected to do well for large circuits, badly for small circuits.
+		\item Statistical security $2^{-S}$ , so we need $40$ circuits to achieve statistical security of $2^{-40}$.
+	\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Huang-Katz-Evans 2013}
+	\begin{itemize}[<+->]
+		\item Developed concurrently to Lindell 2013.
+		\item Uses Symmetric cut and choose. Both parties build circuits, both circuits execute the other's circuits.
+		\item Output determination is such that 
+		\item Statistical security $2^{-S + log(S)}$ , so we need $46$ circuits to achieve statistical security of $2^{-40}$.
+	\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Merging Lindell and HKE}
+	\begin{itemize}[<+->]
+		\item The obvious question raised by Lindell 2013 is can we improve it by changing 
+	\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	\begin{block}{32-bit Addition Circuit Results}
+		\begin{tabular}{| r | c c c c |}
+		\hline
+		\textbf{Builder} & \textbf{CPU Time} & \textbf{Wall Time} & \textbf{Bytes Sent} & \textbf{Bytes Recv} \\
+		\hline
+		\hline
+		LP 2010 & $113.96$ & $27.41$ & $7,648,074$ & $737,109$ \\
+		\hline
+		L 2013 & $171.21$ & $42.03$ & $4,693,761$ & $980,193$ \\
+		\hline
+		HKE 2013 & $45.59$ & $6.77$ & $3,143,383$ & $3,143,366$ \\
+		\hline
+		L-HKE & $145.77$ & $25.47$ & $5,995,366$ & $3,299,399$ \\
+		\hline
+		\end{tabular}
+
+		\vspace{0.2cm}
+
+		\begin{tabular}{| r | c c c c |}
+		\hline
+		\textbf{Executor} & \textbf{CPU Time} & \textbf{Wall Time} & \textbf{Bytes Sent} & \textbf{Bytes Recv} \\
+		\hline
+		\hline
+		LP 2010 & $55.90$ & $27.45$ & $737,109$ & $7,648,074$ \\
+		\hline
+		L 2013 & $101.69$ & $42.05$ & $980,193$ & $4,693,761$ \\
+		\hline
+		HKE 2013 & $45.59$ & $6.77$ & $3,143,366$ & $3,143,383$ \\
+		\hline
+		L-HKE & $132.51$ & $25.83$ & $3,299,399$ & $5,995,366$ \\
+		\hline
+		\end{tabular}
+	\end{block}
+\end{frame}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	\begin{block}{AES-128 Encryption Circuit Results}
+		\begin{tabular}{| r | c c c c |}
+		\hline
+		\textbf{Builder} & \textbf{CPU Time} & \textbf{Wall Time} & \textbf{Bytes Sent} & \textbf{Bytes Recv} \\
+		\hline
+		\hline
+		LP 2010 & $480.82$ & $114.98$ & $668,935,684$ & $2,798,517$ \\
+		\hline
+		L 2013 & $399.27$ & $119.25$ & $210,537,538$ & $1,609,692$ \\
+		\hline
+		HKE 2013 & $185.47$ & $32.95$ & $238,300,835$ & $238,300,840$ \\
+		\hline
+		L-HKE & $417.84$ & $78.22$ & $214,725,419$ & $7,868,176$ \\
+		\hline
+		\end{tabular}
+
+		\vspace{0.2cm}
+
+		\begin{tabular}{| r | c c c c |}
+		\hline
+		\textbf{Executor} & \textbf{CPU Time} & \textbf{Wall Time} & \textbf{Bytes Sent} & \textbf{Bytes Recv} \\
+		\hline
+		\hline
+		LP 2010 & $227.91$ & $116.15$ & $2,798,517$ & $668,935,684$ \\
+		\hline
+		L 2013 & $270.99$ & $119.27$ & $1,609,692$ & $210,537,538$ \\
+		\hline
+		HKE 2013 & $185.47$ & $32.95$ & $238,300,840$ & $238,300,835$ \\
+		\hline
+		L-HKE & $363.46$ & $80.49$ & $7,868,176$ & $214,725,419$ \\
+		\hline
+		\end{tabular}
+	\end{block}
+
+
+\end{frame}
+
 
 
 \end{document}
