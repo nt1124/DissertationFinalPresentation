@@ -22,6 +22,85 @@
 \institute{University of Bristol}
 \date{15th May 2015}
 
+
+
+\newcommand{\AdditionTable}
+{
+	\begin{block}{32-bit Addition Circuit (439 gates)}
+		\begin{tabular}{| p{1.6cm} || c c | c c |}
+		\hline
+		\textbf{Builder} & \textbf{CPU Time} & \textbf{Wall Time} & \textbf{Bytes Sent} & \textbf{Bytes Recv} \\
+		\hline
+		\hline
+		LP-2010 & $113.96$ & $27.41$ & $7,648,074$ & $737,109$ \\
+		\hline
+		L2013 & $171.21$ & $42.03$ & $4,693,761$ & $980,193$ \\
+		\hline
+		HKE & $45.59$ & $6.77$ & $3,143,383$ & $3,143,366$ \\
+		\hline
+		L-HKE & $145.77$ & $25.47$ & $5,995,366$ & $3,299,399$ \\
+		\hline
+		\end{tabular}
+
+		\vspace{0.2cm}
+
+		\begin{tabular}{| p{1.6cm} || c c | c c |}
+		\hline
+		\textbf{Executor} & \textbf{CPU Time} & \textbf{Wall Time} & \textbf{Bytes Sent} & \textbf{Bytes Recv} \\
+		\hline
+		\hline
+		LP-2010 & $55.90$ & $27.45$ & $737,109$ & $7,648,074$ \\
+		\hline
+		L-2013 & $101.69$ & $42.05$ & $980,193$ & $4,693,761$ \\
+		\hline
+		%HKE & $45.59$ & $6.77$ & $3,143,366$ & $3,143,383$ \\
+		%\hline
+		L-HKE & $132.51$ & $25.83$ & $3,299,399$ & $5,995,366$ \\
+		\hline
+		\end{tabular}
+	\end{block}
+}
+
+
+\newcommand{\tableAES}
+{
+	\begin{block}{AES-128 Encryption Circuit (33,872 gates)}
+		\begin{tabular}{| p{1.6cm} | c c c c |}
+		\hline
+		\textbf{Builder} & \textbf{CPU Time} & \textbf{Wall Time} & \textbf{Bytes Sent} & \textbf{Bytes Recv} \\
+		\hline
+		\hline
+		LP 2010 & $480.82$ & $114.98$ & $668,935,684$ & $2,798,517$ \\
+		\hline
+		L 2013 & $399.27$ & $119.25$ & $210,537,538$ & $1,609,692$ \\
+		\hline
+		HKE & $185.47$ & $32.95$ & $238,300,835$ & $238,300,840$ \\
+		\hline
+		L-HKE & $417.84$ & $78.22$ & $214,725,419$ & $7,868,176$ \\
+		\hline
+		\end{tabular}
+
+		\vspace{0.2cm}
+
+		\begin{tabular}{| p{1.6cm} | c c c c |}
+		\hline
+		\textbf{Executor} & \textbf{CPU Time} & \textbf{Wall Time} & \textbf{Bytes Sent} & \textbf{Bytes Recv} \\
+		\hline
+		\hline
+		LP 2010 & $227.91$ & $116.15$ & $2,798,517$ & $668,935,684$ \\
+		\hline
+		L 2013 & $270.99$ & $119.27$ & $1,609,692$ & $210,537,538$ \\
+		\hline
+		%HKE & $185.47$ & $32.95$ & $238,300,840$ & $238,300,835$ \\
+		%\hline
+		L-HKE & $363.46$ & $80.49$ & $7,868,176$ & $214,725,419$ \\
+		\hline
+		\end{tabular}
+	\end{block}
+}
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
@@ -29,12 +108,11 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Project Overview}
-	\begin{itemize}[<+->]
-		\item Secure Multiparty Computation is a long standing problem in cryptography.
+	\begin{itemize} % [<+->]
+		\item Secure Two Party Computation (S2C) is a long standing problem in cryptography.
 		\begin{itemize}
-			\item How can mutually distrusting parties collaborate compute a function without revealing their inputs?
+			\item How can two mutually distrusting parties collaborate compute a function without revealing their inputs?
 		\end{itemize}
-		\item A subset of this problem is Secure Two Party Computation (S2C).
 		\item Yao Garbled Circuits are one approach to S2C, but naive Yao Circuits only provide security against passive adversaries. 
 		\item Recently many protocols have been proposed to use Yao Circuits to provide security in the presence of active adversaries. 
 		\item Our aim was to implement some of these recent protocols so we could compare their performance.
@@ -44,20 +122,20 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Secure Multiparty Computation}
-	\begin{itemize}[<+->]
-		\item Given $n$ parties who each have an input $x_i$
-		\item Parties wish to compute a function $(y_1, ..., y_n) = f(x_1, ..., x_n)$
+	\begin{itemize} % [<+->]
+		% \item Given $n$ parties who each have an input $x_i$
+		\item Parties wish to compute a function $(y_1, y_2) = f(x_1, x_2)$
 		\item But they want the following security properties,
 		\begin{itemize}
 			\item Privacy - Participating parties only learn their output.
 			\item Correctness - Output is correct evaluation of the function \emph{given the inputs}.
-			\item Independence of inputs - Participating parties only learn their output.
+			\item Independence of inputs - Parties only learn their output from participating.
 		\end{itemize}
 	\end{itemize}
 \end{frame}
 
 \begin{frame}{Yao's Protocol}
-	\begin{itemize}[<+->]
+	\begin{itemize} % [<+->]
 		\item Proposed by Andrew Yao in 1986. Whilst it's primarily for Two Party computation it can be extended to Multiparty computation.
 		\item  The basic idea,
 		\begin{itemize}
@@ -90,17 +168,17 @@
 				Outputs : $\emptyset$\\
 			\end{minipage}
 		\end{figure}
-
+	
 		Formal definition of the functionality of a one-out-of-two OT protocol. The Receiver should learn nothing about the value of $x_{1-b}$ and the Sender should learn nothing about $b$.
 	\end{block}
-
+	
 	We will not dwell on the details of Oblivious Transfer, suffice to say it is possible, if anyone is interested in seeing a concrete protocol I suggest the Naor-Pinkas Oblivious Transfer.
 \end{frame}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{The Security of Yao's Protocol}
-	\begin{itemize}[<+->]
+	\begin{itemize} % [<+->]
 		\item As already mentioned Yao Circuits are only secure in the presence of passive adversaries. \footnotemark
 		\item In naive Yao Circuits the Executor has no way to know if the circuit given to it by the Builder actually computes the function it purports to.
 		\item There are two main approaches to overcoming this,
@@ -110,13 +188,13 @@
 		\end{itemize}
 	\end{itemize}
 	
-	\footnotetext[1]{For a formal proof of this see ``A Proof of Security of Yao's Protocol for Two-Party Computation'' by Lindell and Pinkas (2006) }
+	\footnotetext[1]{For a formal proof of this see ``A Proof of Security of Yao's Protocol for Two-Party Computation'' by Lindell and Pinkas (2006).}
 \end{frame}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Cut and Choose - Concept}
-	\begin{itemize}[<+->]
+	\begin{itemize} % [<+->]
 		\item All three protocols we implemented are based on Cut and Choose.
 		\item The Builder now generates many garbled circuits and sends them to the Executor.
 		\item The Executor then picks a set of these circuits and asks the Builder to open them so they can be checked for correctness.
@@ -128,14 +206,15 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Cut and Choose - Issues}
-	\begin{itemize}[<+->]
-		\item Cut and Choose seems trivially simple, however it actually raises several new problems. The main two are,
+\begin{frame}{Cut and Choose - Pitfalls}
+	\begin{itemize} % [<+->]
+		\item Cut and Choose seems trivially simple, however it actually raises several new problems. The main ones are,
 		\begin{itemize}
 			\item Consistency of Builder's inputs.
 			\item Consistency of Executor's inputs.
-			\item Output determination.
+			\item Output determination - Now we have many circuits what do we do if their outputs disagree?
 		\end{itemize}
+		\item Protocols aiming to provide active security 
 	\end{itemize}
 
 \end{frame}
@@ -143,7 +222,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Lindell-Pinkas 2010}
-	\begin{itemize}[<+->]
+	\begin{itemize} % [<+->]
 		\item Based around a new primitive, a Cut and Choose Oblivious Transfer.
 		\item Using an elegant approach to consistency using Zero Knowledge proofs.
 		\item Half of the circuits are check circuits, the other half are evaluation circuits.
@@ -160,7 +239,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Lindell 2013}
-	\begin{itemize}[<+->]
+	\begin{itemize} % [<+->]
 		\item Very similar to the Lindell-Pinkas 2010, uses the same basic ideas.
 		\item Modifies the Cut and Choose Oblivious Transfer.
 		\item Runs a small sub-computation (using Lindell-Pinkas) such that only one circuit needs to be correct.
@@ -173,10 +252,14 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Huang-Katz-Evans 2013}
-	\begin{itemize}[<+->]
+	\begin{itemize} % [<+->]
 		\item Developed concurrently to Lindell 2013.
 		\item Uses Symmetric cut and choose. Both parties build circuits, both circuits execute the other's circuits.
-		\item Output determination is such that 
+		\item Uses a logarithm based approach to the consistency of inputs.
+		\item Output determination is such that,
+		\begin{itemize}
+			\item For each output wire a value is output if at least one of your circuits gives that value \emph{and} at least one of you partner's circuits gives the same value.
+		\end{itemize}
 		\item Statistical security $2^{-S + log(S)}$ , so we need $46$ circuits to achieve statistical security of $2^{-40}$.
 	\end{itemize}
 
@@ -185,8 +268,15 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Merging Lindell and HKE}
-	\begin{itemize}[<+->]
-		\item The obvious question raised by Lindell 2013 is can we improve it by changing 
+	\begin{itemize} % [<+->]
+		\item The obvious question raised by Lindell 2013 is can we improve it by changing the protocol used for the sub-computation.
+		\item We changed the sub-computation to use HKE instead.
+		\item Not a trivial task,
+		\begin{itemize}
+			\item Lindell provides several levels of optimisations to the sub-computation some of which are incompatible with HKE.
+			\item The Lindell-Pinkas Zero Knowledge Proof approach to cannot work here, we have to switch the whole protocol to use the HKE logarithm based approach.
+			\item Additionally the output of the sub-computation needs to be hidden from the Builder. % Talk about the XOR.
+		\end{itemize}
 	\end{itemize}
 
 \end{frame}
@@ -194,79 +284,39 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-	\begin{block}{32-bit Addition Circuit Results}
-		\begin{tabular}{| r | c c c c |}
-		\hline
-		\textbf{Builder} & \textbf{CPU Time} & \textbf{Wall Time} & \textbf{Bytes Sent} & \textbf{Bytes Recv} \\
-		\hline
-		\hline
-		LP 2010 & $113.96$ & $27.41$ & $7,648,074$ & $737,109$ \\
-		\hline
-		L 2013 & $171.21$ & $42.03$ & $4,693,761$ & $980,193$ \\
-		\hline
-		HKE 2013 & $45.59$ & $6.77$ & $3,143,383$ & $3,143,366$ \\
-		\hline
-		L-HKE & $145.77$ & $25.47$ & $5,995,366$ & $3,299,399$ \\
-		\hline
-		\end{tabular}
-
-		\vspace{0.2cm}
-
-		\begin{tabular}{| r | c c c c |}
-		\hline
-		\textbf{Executor} & \textbf{CPU Time} & \textbf{Wall Time} & \textbf{Bytes Sent} & \textbf{Bytes Recv} \\
-		\hline
-		\hline
-		LP 2010 & $55.90$ & $27.45$ & $737,109$ & $7,648,074$ \\
-		\hline
-		L 2013 & $101.69$ & $42.05$ & $980,193$ & $4,693,761$ \\
-		\hline
-		HKE 2013 & $45.59$ & $6.77$ & $3,143,366$ & $3,143,383$ \\
-		\hline
-		L-HKE & $132.51$ & $25.83$ & $3,299,399$ & $5,995,366$ \\
-		\hline
-		\end{tabular}
-	\end{block}
+	\AdditionTable
+	HKE runs faster by a very clear margin, while L-2013 uses less bandwidth.
 \end{frame}
-
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-	\begin{block}{AES-128 Encryption Circuit Results}
-		\begin{tabular}{| r | c c c c |}
-		\hline
-		\textbf{Builder} & \textbf{CPU Time} & \textbf{Wall Time} & \textbf{Bytes Sent} & \textbf{Bytes Recv} \\
-		\hline
-		\hline
-		LP 2010 & $480.82$ & $114.98$ & $668,935,684$ & $2,798,517$ \\
-		\hline
-		L 2013 & $399.27$ & $119.25$ & $210,537,538$ & $1,609,692$ \\
-		\hline
-		HKE 2013 & $185.47$ & $32.95$ & $238,300,835$ & $238,300,840$ \\
-		\hline
-		L-HKE & $417.84$ & $78.22$ & $214,725,419$ & $7,868,176$ \\
-		\hline
-		\end{tabular}
 
-		\vspace{0.2cm}
+	\AdditionTable
+	L-2013 run slower than LP-2010 due to the size of the circuit.  
+\end{frame}
 
-		\begin{tabular}{| r | c c c c |}
-		\hline
-		\textbf{Executor} & \textbf{CPU Time} & \textbf{Wall Time} & \textbf{Bytes Sent} & \textbf{Bytes Recv} \\
-		\hline
-		\hline
-		LP 2010 & $227.91$ & $116.15$ & $2,798,517$ & $668,935,684$ \\
-		\hline
-		L 2013 & $270.99$ & $119.27$ & $1,609,692$ & $210,537,538$ \\
-		\hline
-		HKE 2013 & $185.47$ & $32.95$ & $238,300,840$ & $238,300,835$ \\
-		\hline
-		L-HKE & $363.46$ & $80.49$ & $7,868,176$ & $214,725,419$ \\
-		\hline
-		\end{tabular}
-	\end{block}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+	\AdditionTable
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Some observations}
+	\begin{itemize} % [<+->]
+		\item A clear victory for HKE in Wall and CPU time. Surprising given it requires many more circuits than the L-2013 and L-HKE protocols.
+		\item L-2013 needs much less bandwidth.
+	\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	\tableAES
 
 
 \end{frame}

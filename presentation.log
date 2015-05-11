@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.12.29)  11 MAY 2015 10:19
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.12.29)  12 MAY 2015 00:07
 entering extended mode
 **presentation.tex
 
@@ -740,26 +740,27 @@ LaTeX Info: Redefining \addtolength on input line 77.
 ))
 (C:\Users\Nicholas\Documents\GitHub\DissertationFinalPresentation\presentation.
 aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 26.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 105.
+LaTeX Font Info:    ... okay on input line 105.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 105.
+LaTeX Font Info:    ... okay on input line 105.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 105.
+LaTeX Font Info:    ... okay on input line 105.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 105.
+LaTeX Font Info:    ... okay on input line 105.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 105.
+LaTeX Font Info:    ... okay on input line 105.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 105.
+LaTeX Font Info:    ... okay on input line 105.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 105.
+LaTeX Font Info:    ... okay on input line 105.
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 105.
+
  ("C:\Program Files (x86)\MikTex\tex\latex\psnfss\ot1phv.fd"
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
 LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 10.32pt on input line 26.
+(Font)              scaled to size 10.32pt on input line 105.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -797,7 +798,7 @@ LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
 
 ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box53
-Package hyperref Info: Link coloring OFF on input line 26.
+Package hyperref Info: Link coloring OFF on input line 105.
 
 ("C:\Program Files (x86)\MikTex\tex\latex\hyperref\nameref.sty"
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -807,9 +808,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count156
 )
-LaTeX Info: Redefining \ref on input line 26.
-LaTeX Info: Redefining \pageref on input line 26.
-LaTeX Info: Redefining \nameref on input line 26.
+LaTeX Info: Redefining \ref on input line 105.
+LaTeX Info: Redefining \pageref on input line 105.
+LaTeX Info: Redefining \nameref on input line 105.
 
 (C:\Users\Nicholas\Documents\GitHub\DissertationFinalPresentation\presentation.
 out)
@@ -841,55 +842,67 @@ Dictionary: translator-numbers-dictionary, Language: English
 or-theorem-dictionary\translator-theorem-dictionary-English.dict"
 Dictionary: translator-theorem-dictionary, Language: English 
 )
-LaTeX Info: Redefining \includegraphics on input line 26.
+LaTeX Info: Redefining \includegraphics on input line 105.
 
 (C:\Users\Nicholas\Documents\GitHub\DissertationFinalPresentation\presentation.
 nav)
 LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 5.16pt on input line 26.
+(Font)              scaled to size 5.16pt on input line 105.
 LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 14.86081pt on input line 26.
+(Font)              scaled to size 14.86081pt on input line 105.
 LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 6.88pt on input line 26.
+(Font)              scaled to size 6.88pt on input line 105.
 LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 21.3968pt on input line 28.
+(Font)              scaled to size 21.3968pt on input line 107.
 LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 9.41699pt on input line 42.
-LaTeX Font Info:    Try loading font information for U+msa on input line 42.
+(Font)              scaled to size 9.41699pt on input line 120.
+LaTeX Font Info:    Try loading font information for U+msa on input line 120.
  ("C:\Program Files (x86)\MikTex\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 42.
+LaTeX Font Info:    Try loading font information for U+msb on input line 120.
 
 ("C:\Program Files (x86)\MikTex\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 17.83641pt on input line 42.
+(Font)              scaled to size 17.83641pt on input line 120.
 LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 3.44pt on input line 42.
+(Font)              scaled to size 3.44pt on input line 120.
  [1{C:/Users/Nicholas/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
  <C:/Users/Nicholas/Documents/GitHub/DissertationFinalPresentation/UoB-watermar
 k.pdf> <C:/Users/Nicholas/Documents/GitHub/DissertationFinalPresentation/UoB-lo
 go.pdf>] [2 <C:/Users/Nicholas/Documents/GitHub/DissertationFinalPresentation/U
-oB-bullet.pdf>] [3
+oB-bullet.pdf>]
+LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <10.95> not available
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 135.
+LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
+(Font)              scaled to size 9.41699pt on input line 135.
+ [3
 
 ]
 [4
 
-] [5
+]
+LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
+(Font)              scaled to size 12.384pt on input line 176.
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <12> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 176.
+LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
+(Font)              scaled to size 10.32pt on input line 176.
+ [5
 
-] [6
+]
+LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
+(Font)              scaled to size 8.6pt on input line 192.
+LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
+(Font)              scaled to size 6.02pt on input line 192.
+ [6
 
 ] [7
 
-]
-LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <10.95> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 57.
-LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
-(Font)              scaled to size 9.41699pt on input line 57.
- [8
+] [8
 
 ] [9
 
@@ -909,116 +922,29 @@ LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
 
 ] [17
 
-] [18
-
-] [19
-
-]
-[20
-
-]
-LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 12.384pt on input line 98.
-LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <12> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 98.
-LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
-(Font)              scaled to size 10.32pt on input line 98.
- [21
-
-]
-LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 8.6pt on input line 114.
-LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 6.02pt on input line 114.
- [22
-
-] [23
-
-] [24
-
-] [25
-
-] [26
-
-] [27
-
-] [28
-
-] [29
-
-] [30
-
-] [31
-
-] [32
-
-] [33
-
-] [34
-
-]
-[35
-
-] [36
-
-] [37
-
-] [38
-
-] [39
-
-] [40
-
-] [41
-
-] [42
-
-] [43
-
-] [44
-
-] [45
-
-] [46
-
-] [47
-
-] [48
-
-] [49
-
-]
-[50
-
-] [51
-
-] [52
-
-] [53
-
 ]
 \tf@nav=\write6
 \tf@toc=\write7
 \tf@snm=\write8
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 278.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 278.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 326.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 326.
 
 (C:\Users\Nicholas\Documents\GitHub\DissertationFinalPresentation\presentation.
 aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 278.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 278.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 326.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 326.
 Package rerunfilecheck Info: File `presentation.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 278.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 326.
  ) 
 Here is how much of TeX's memory you used:
- 16413 strings out of 493921
- 316284 string characters out of 3146470
- 383571 words of memory out of 3000000
- 19192 multiletter control sequences out of 15000+200000
+ 16347 strings out of 493921
+ 315639 string characters out of 3146470
+ 387042 words of memory out of 3000000
+ 19198 multiletter control sequences out of 15000+200000
  30862 words of font info for 65 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 48i,14n,51p,393b,554s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 48i,14n,51p,393b,542s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files (x86)/MikTex/fonts/enc/dvips/fontname/8r.enc}<C:/Program Fi
 les (x86)/MikTex/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files (x
 86)/MikTex/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files (x86)/Mik
@@ -1029,9 +955,9 @@ c/amsfonts/cm/cmsy8.pfb><C:/Program Files (x86)/MikTex/fonts/type1/public/amsfo
 nts/symbols/msam7.pfb><C:/Program Files (x86)/MikTex/fonts/type1/urw/helvetic/u
 hvb8a.pfb><C:/Program Files (x86)/MikTex/fonts/type1/urw/helvetic/uhvr8a.pfb><C
 :/Program Files (x86)/MikTex/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on presentation.pdf (53 pages, 204054 bytes).
+Output written on presentation.pdf (17 pages, 133729 bytes).
 PDF statistics:
- 418 PDF objects out of 1000 (max. 8388607)
- 107 named destinations out of 1000 (max. 500000)
+ 179 PDF objects out of 1000 (max. 8388607)
+ 35 named destinations out of 1000 (max. 500000)
  69 words of extra memory for PDF output out of 10000 (max. 10000000)
 
