@@ -31,7 +31,7 @@
 		\hline
 		LP-2010 & $113.96$ & $27.41$ & $7,648,074$ & $737,109$ \\
 		\hline
-		L2013 & $171.21$ & $42.03$ & $4,693,761$ & $980,193$ \\
+		L-2013 & $171.21$ & $42.03$ & $4,693,761$ & $980,193$ \\
 		\hline
 		HKE & $45.59$ & $6.77$ & $3,143,383$ & $3,143,366$ \\
 		\hline
@@ -107,15 +107,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Project Background}
 	\begin{itemize} % [<+->]
-		\item Secure Multi Party Computation (SMC) is a long standing problem in cryptography.
+		\item Secure Two Party Computation (S2C) is a long standing problem in cryptography.
 		\begin{itemize}
-			\item How can a set of mutually distrusting parties collaborate to compute a function without revealing their inputs?
+			\item How can a pair of mutually distrusting parties collaborate to compute a function without revealing their inputs?
 		\end{itemize}
-		\item We focused on the sub-problem of Secure \emph{Two} Party Computation.
 		% MENTION APPLICATIONS HERE!
-		\item Yao Garbled Circuits are a popular approach to S2C, but naive Yao Circuits only provide security against passive adversaries.
-		\item Recently several protocols have been proposed to provide security against active adversaries.
-		\item Our aim was to provide the first practical comparison of some of these protocols performance.
+		\item Recently several protocols have been proposed (based on Yao's protocol) to provide security against active adversaries.
+		%\item Yao Garbled Circuits are a popular approach to S2C, but naive Yao Circuits only provide security against passive adversaries.
+		%\item Recently several protocols have been proposed to provide security against active adversaries.
+		\item Our aim was to provide the first practical comparison of these protocols performance.
 	\end{itemize}
 \end{frame}
 
@@ -160,42 +160,11 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \begin{frame}
-% 	\begin{block}{Oblivious Transfer}
-% 		\vspace{0.2cm}
-% 		\begin{figure}[!htb]
-% 			\centering
-% 			\begin{minipage}{0.45\textwidth}
-% 				\centering
-% 			\textbf{Receiver}\\
-% 				Inputs : $b \in \{0, 1\}$\\
-% 				Outputs : $x_b$\\
-% 			\end{minipage}
-% 			\begin{minipage}{0.45\textwidth}
-% 				\centering
-% 				\textbf{Sender}\\
-% 				Inputs : $x_0, x_1 \in \{0, 1\}^l$\\
-% 				Outputs : $\emptyset$\\
-% 			\end{minipage}
-% 		\end{figure}
-% 	
-% 		Formal definition of the functionality of a one-out-of-two OT protocol. The Receiver should learn nothing about the value of $x_{1-b}$ and the Sender should learn nothing about $b$.
-% 	\end{block}
-% 	
-% 	We will not dwell on the details of Oblivious Transfer, suffice to say it is possible, if anyone is interested in seeing a concrete protocol I suggest the Naor-Pinkas Oblivious Transfer.
-% \end{frame}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{The Security of Yao's Protocol}
 	\begin{itemize} % [<+->]
 		\item As already mentioned Yao's protocol is only secure against passive adversaries. \footnotemark
 		\item The Executor has no way to know if the circuit given to it by the Builder actually computes the function it purports to.
-		\item There are two main approaches to overcoming this,
-		\begin{itemize}
-			\item Cut and Choose.
-			\item Commit and Prove.
-		\end{itemize}
+		\item The main approach to overcome this problem is called `Cut and Choose'.
 	\end{itemize}
 	
 	\footnotetext[1]{For a formal proof of this see ``A Proof of Security of Yao's Protocol for Two-Party Computation'' by Lindell and Pinkas (2006).}
@@ -205,10 +174,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Cut and Choose - Concept}
 	\begin{itemize} % [<+->]
-		\item All three protocols we implemented are based on Cut and Choose.
-		\item The Builder now generates many garbled circuits and sends them to the Executor.
+		\item The Builder generates \emph{many} garbled circuits and sends them to the Executor.
 		\item The Executor then picks a subset of these circuits and asks the Builder to open them so they can be checked for correctness.
 		\item If all check circuits pass then the remaining circuits are evaluated.
+		\item This gives us statistical security as a malicious Builder must guess which circuit the Executor will open.
 		% \item So a malicious Builder must now guess which circuits will be checked.
 	\end{itemize}
 \end{frame}
@@ -222,7 +191,6 @@
 			\item Consistency of inputs - Ensuring the parties give the same input to the many circuits, without leaking the inputs to the other party.
 			\item Output determination - Now we have many circuits what do we do if their outputs disagree?
 		\end{itemize}
-		\item Protocols aiming to provide active security must address each of these issues.
 	\end{itemize}
 
 \end{frame}
@@ -231,10 +199,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Lindell-Pinkas 2010 (LP-2010)}
 	\begin{itemize} % [<+->]
-		\item Based around a new primitive, a Cut and Choose Oblivious Transfer.
-		\item Using an elegant approach to consistency using Zero Knowledge proofs.
+		\item Using a conceptually elegant approach to consistency using Zero Knowledge proofs.
 		\item Half of the circuits are check circuits, the other half are evaluation circuits.
-		\item Return majority output of the evaluation circuits.
+		\item Simply returns majority output of the evaluation circuits.
 		\item Statistical security $2^{-0.311 \cdot S}$  where $S$ is the number of circuits.
 		\item So we need $130$ circuits to achieve statistical security of $2^{-40}$.
 		%\begin{itemize}
@@ -248,9 +215,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Lindell 2013 (L-2013)}
 	\begin{itemize} % [<+->]
-		\item Builds on Lindell-Pinkas 2010 using the same basic ideas.
-		\item Modifies the Cut and Choose Oblivious Transfer. % Now 50% chance of being a check circuit.
-		\item Runs a small sub-computation (using Lindell-Pinkas) such that only one circuit needs to be correct.
+		\item Builds on Lindell-Pinkas 2010 using the same basic ideas.  % Now 50% chance of being a check circuit.
+		\item Main difference, runs a small sub-computation (using Lindell-Pinkas) such that only one circuit needs to be correct.
 		\item We expected it to perform well for large circuits and poorly for small circuits.
 		\item Statistical security $2^{-S}$ , so we need $40$ circuits to achieve statistical security of $2^{-40}$.
 	\end{itemize}
@@ -261,7 +227,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Huang-Katz-Evans 2013 (HKE)}
 	\begin{itemize} % [<+->]
-		\item Developed concurrently to Lindell 2013.
 		\item Uses Symmetric cut and choose. Both parties build circuits, both parties execute the other's circuits.
 		\item Uses a logarithm based approach to the consistency of inputs.
 		\item Output determination is such that,
