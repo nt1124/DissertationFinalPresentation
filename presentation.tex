@@ -107,15 +107,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Project Background}
 	\begin{itemize} % [<+->]
-		\item Secure Two Party Computation (S2C) is a long standing problem in cryptography.
-		\begin{itemize}
-			\item How can a pair of mutually distrusting parties collaborate to compute a function without revealing their inputs?
-		\end{itemize}
-		% MENTION APPLICATIONS HERE!
-		\item Recently several protocols have been proposed (based on Yao's protocol) to provide security against active adversaries.
-		%\item Yao Garbled Circuits are a popular approach to S2C, but naive Yao Circuits only provide security against passive adversaries.
-		%\item Recently several protocols have been proposed to provide security against active adversaries.
-		\item Our aim was to provide the first practical comparison of these protocols performance.
+		\item Secure Two Party Computation (S2C) - How can a pair of mutually distrusting parties collaborate to compute a function without revealing their inputs?
+		\item Yao's Protocol is one approach to S2C, but in its naive form only provide security against passive adversaries.
+		\item Recently several protocols have been proposed using Cut-and-Choose variants of Yao's protocol to provide security against active adversaries.
+		\item Our aim was to provide the first practical comparison and analysis of these protocol's performance.
 	\end{itemize}
 \end{frame}
 
@@ -124,66 +119,61 @@
 \begin{frame}{Project Motivation}
 	\begin{itemize} % [<+->]
 		\item Without a good comparison of these protocols we cannot know which is the most promising for further research.
-		\item Whilst limited theoretical comparisons have been made these can only take us so far.
-		\item In order to run practical comparisons we need implementations to compare.
-		\item Furthermore we broke down our results to identify the bottlenecks for each protocol.
+		\item In order to run practical comparisons we need implementations to compare. For two of the three protocols our implementations are the first.
+		\item Furthermore we broke down our results to identify the bottlenecks for each protocol to guide future optimisation
 	\end{itemize}
 \end{frame}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Secure Two Party Computation}
-	\begin{itemize} % [<+->]
-		\item Two parties wish to compute a function $(y_1, y_2) = f(x_1, x_2)$
-		\item They desire the following security properties,
-		\begin{itemize}
-			\item Privacy - Parties only learn their output from participating.
-			\item Correctness - Output is correct evaluation of the function \emph{given the inputs}.
-			\item Independence of inputs - Neither party can give their input as a function of the others.
-		\end{itemize}
-	\end{itemize}
-\end{frame}
+%\begin{frame}{Secure Two Party Computation}
+%	\begin{itemize} % [<+->]
+%		\item Two parties wish to compute a function $(y_1, y_2) = f(x_1, x_2)$
+%		\item They desire the following security properties,
+%		\begin{itemize}
+%			\item Privacy - Parties only learn their output from participating.
+%			\item Correctness - Output is correct evaluation of the function \emph{given the inputs}.
+%			\item Independence of inputs - Neither party can give their input as a function of the others.
+%		\end{itemize}
+%	\end{itemize}
+%\end{frame}
 
 \begin{frame}{Yao's Protocol}
 	\begin{itemize} % [<+->]
 		\item Proposed by Andrew Yao in 1986. Primarily used for Two Party computation but it can be extended to Multiparty computation.
-		\item  The basic idea,
-		\begin{itemize}
-			\item One party is labelled the `Builder' and the other is the `Executor'.
-			\item The Builder constructs a binary circuit representing the function.
-			\item The Builder then `garbles' this circuit, encrypting it in such a way that it can be evaluated without revealing information about the inputs.%, and sends it to the Executor.
-			%\item The Builder's inputs are hardcoded, the Executor's inputs are obtained by Oblivious Transfers.
-			%\item Using these inputs the Executor can then evaluate the circuit and so the function.
-		\end{itemize}
+		\item The parties are labelled as the `Builder' and the `Executor'.
+		\item The Builder constructs a binary circuit representing the function and `garbles' this circuit.
+		\item Such a garbled circuit can be evaluated without revealing information about the inputs.
+		\item This is only secure if we trust the Builder garbled the circuit honestly.
 	\end{itemize}
 \end{frame}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{The Security of Yao's Protocol}
-	\begin{itemize} % [<+->]
-		\item As already mentioned Yao's protocol is only secure against passive adversaries. \footnotemark
-		\item The Executor has no way to know if the circuit given to it by the Builder actually computes the function it purports to.
-		\item The main approach to overcome this problem is called `Cut and Choose'.
-	\end{itemize}
-	
-	\footnotetext[1]{For a formal proof of this see ``A Proof of Security of Yao's Protocol for Two-Party Computation'' by Lindell and Pinkas (2006).}
-\end{frame}
+%\begin{frame}{The Security of Yao's Protocol}
+%	\begin{itemize} % [<+->]
+%		\item As already mentioned Yao's protocol is only secure against passive adversaries. \footnotemark
+%		\item The Executor has no way to know if the circuit given to it by the Builder actually computes the function it purports to.
+%		\item The main approach to overcome this problem is called `Cut and Choose'.
+%	\end{itemize}
+%	
+%	\footnotetext[1]{For a formal proof of this see ``A Proof of Security of Yao's Protocol for Two-Party Computation'' by Lindell and Pinkas (2006).}
+%\end{frame}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Cut and Choose - Concept}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Cut and Choose}
 	\begin{itemize} % [<+->]
 		\item The Builder generates \emph{many} garbled circuits and sends them to the Executor.
 		\item The Executor then picks a subset of these circuits and asks the Builder to open them so they can be checked for correctness.
 		\item If all check circuits pass then the remaining circuits are evaluated.
 		\item This gives us statistical security as a malicious Builder must guess which circuit the Executor will open.
-		% \item So a malicious Builder must now guess which circuits will be checked.
+		% \item While this is conceptually simple there are some nuances.
 	\end{itemize}
 \end{frame}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Cut and Choose - Pitfalls}
 	\begin{itemize} % [<+->]
 		\item Cut and Choose seems trivially simple, however it actually raises several new problems. The main ones are,

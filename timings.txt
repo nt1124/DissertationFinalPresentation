@@ -1,0 +1,24 @@
+Project Background 		: 060 seconds
+Motivation 			: 030 seconds
+Yao's Protocol			: 045 seconds
+Cut and Choose - Concept	: 045 seconds
+Cut and Choose - Pitfalls	: 035 seconds
+				= 215 seconds
+
+Lindell-Pinkas 2010 		: 060 seconds
+Lindell 2013	 		: 060 seconds
+HKE 2013	 		: 060 seconds
+L-HKE		 		: 060 seconds
+				= 240 seconds
+
+Results Plus 1			: 060 seconds
+Results Plus 2			: 030 seconds
+Results Plus 3			: 030 seconds
+				= 120 seconds
+
+Results AES 1			: 030 seconds
+Results AES 2			: 030 seconds
+				= 060 seconds
+
+
+Total				= 635 seconds
