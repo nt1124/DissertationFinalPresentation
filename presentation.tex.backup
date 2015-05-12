@@ -294,18 +294,15 @@
 	\AdditionTable
 	HKE runs fastest by a very clear margin, while L-2013 uses the least bandwidth.
 \end{frame}
-% HKE wins! But not only does it win in terms of Wall Clock time, it also wins in CPU time by a clear margin.
-% This is surprise (especially the scale of the difference) as it has more circuits to build etc than L-2013/L-HKE.
-% L-2013 uses the least bandwidth, mainly because less circuits to send.
 
+% HKE wins! But not only does it win in terms of Wall Clock time, it also wins in CPU time by a clear margin.
+% L-2013 uses the least bandwidth, mainly because less circuits to send.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 	\AdditionTable
 	L-2013 runs substantially slower than LP-2010 due to the relative cost of the sub-computation being high.
 \end{frame}
-% As we expected L-2013 is much slower on this small circuit. When we broke the costs down the sub-computation we discovered half the wall time was spent on the sub-computation.
-% Just under a quarter spent on consistency of Builder's inputs.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -313,38 +310,21 @@
 	\AdditionTable
 	L-HKE's results are very hopeful compared to LP-2010 and L-2013.
 \end{frame}
-% Main savings are in the sub-computations (about 2/3 the cost) and in the proof of Builder's consistency.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 	\tableAES
 
-	HKE still has a commanding lead. While L-2013 closes the gap to LP-2010.
+	HKE still has a commanding lead. L-2013 closes in on LP-2010.
 \end{frame}
-% We see that HKE maintains its lead. L-2013 and LP-2010 are close to the tipping point where L-2013 wins all round.
-% In fact L-2013 already winning in CPU time, just needs a little more Wall Time.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\tableAES
-
-	At first glance L-HKE is hopeful. However, the breaking down the timings reveals cause for concern.
-\end{frame}
-% Basically the sub-computations are now at about equal run times. The removal of optimisations having effect.
-% The speed up is now entirely due to the Builder input consistency proof. So what? Well I can't think of a reason the same approach won't work for L-2013.
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Some Conclusions}
+\begin{frame}{Some observations}
 	\begin{itemize} % [<+->]
-		\item A clear victory for HKE in Wall and CPU time, despite needing to build/check more circuits. Symmetric Cut and Choose merits further work.
-		\item L-2013 is the protocol of choice if bandwidth is at a premium, e,g, when on a metered connection.
-		\item L-HKE shows promise on smaller circuits over L-2013, but is hampered on large circuits by the optimisation roll backs.
-		\item The primary variable for predicting cost is the number of inputs.
-		\item The depth of the circuit (size of circuit minus inputs) mainly affects bandwidth.
+		\item A clear victory for HKE in Wall and CPU time. Surprising given it requires many more circuits than the L-2013 and L-HKE protocols.
+		\item L-2013 needs much less bandwidth.
 	\end{itemize}
 
 \end{frame}
@@ -357,7 +337,7 @@
 		\item We provide the first implementations of LP-2010 and L-2013.
 		\item We propose and implement a variant of L-2013 using HKE for the sub-computation.
 		\item We provide the first practical comparison of LP-2010, L-2013, HKE and our variant.
-		\item We suggest abandoning the Zero Knowledge Proof approach to consistency proving in exchange for the logarithm approach.
+		\item Based on our results we suggest the abandonment of the Zero Knowledge Proof approach to consistency proving.
 		
 	\end{itemize}
 \end{frame}
