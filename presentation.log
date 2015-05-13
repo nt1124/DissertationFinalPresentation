@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.12.29)  12 MAY 2015 22:09
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.12.29)  13 MAY 2015 23:19
 entering extended mode
 **presentation.tex
 
@@ -923,26 +923,28 @@ LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
 
 ] [17
 
+] [18
+
 ]
 \tf@nav=\write6
 \tf@toc=\write7
 \tf@snm=\write8
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 321.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 321.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 333.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 333.
 
 (C:\Users\Nicholas\Documents\GitHub\DissertationFinalPresentation\presentation.
 aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 321.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 321.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 333.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 333.
 Package rerunfilecheck Info: File `presentation.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 321.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 333.
  ) 
 Here is how much of TeX's memory you used:
- 16317 strings out of 493921
- 314994 string characters out of 3146470
+ 16323 strings out of 493921
+ 315045 string characters out of 3146470
  388051 words of memory out of 3000000
- 19169 multiletter control sequences out of 15000+200000
+ 19173 multiletter control sequences out of 15000+200000
  28174 words of font info for 58 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  48i,14n,51p,393b,542s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -955,9 +957,9 @@ ts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/MikTex/fonts/type1
 /amsfonts/symbols/msam7.pfb><C:/Program Files (x86)/MikTex/fonts/type1/urw/helv
 etic/uhvb8a.pfb><C:/Program Files (x86)/MikTex/fonts/type1/urw/helvetic/uhvr8a.
 pfb><C:/Program Files (x86)/MikTex/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on presentation.pdf (17 pages, 121189 bytes).
+Output written on presentation.pdf (18 pages, 122888 bytes).
 PDF statistics:
- 175 PDF objects out of 1000 (max. 8388607)
- 35 named destinations out of 1000 (max. 500000)
+ 184 PDF objects out of 1000 (max. 8388607)
+ 37 named destinations out of 1000 (max. 500000)
  69 words of extra memory for PDF output out of 10000 (max. 10000000)
 

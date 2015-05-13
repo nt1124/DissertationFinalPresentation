@@ -162,7 +162,7 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Cut and Choose}
+\begin{frame}{Cut and Choose - Concept}
 	\begin{itemize} % [<+->]
 		\item The Builder generates \emph{many} garbled circuits and sends them to the Executor.
 		\item The Executor then picks a subset of these circuits and asks the Builder to open them so they can be checked for correctness.
@@ -298,21 +298,33 @@
 		\item A clear victory for HKE in Wall and CPU time, despite needing to build/check more circuits. Symmetric Cut and Choose merits further work.
 		\item L-2013 is the protocol of choice if bandwidth is at a premium, e,g, when on a metered connection.
 		\item L-HKE shows promise on smaller circuits over L-2013, but is hampered on large circuits by the optimisation roll backs.
-		\item The primary variable for predicting cost is the number of inputs.
-		\item The depth of the circuit (size of circuit minus inputs) mainly affects bandwidth.
+		% \item The primary variable for predicting cost is the number of inputs.
+		% \item The depth of the circuit (size of circuit minus inputs) mainly affects bandwidth.
 	\end{itemize}
 
 \end{frame}
 
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Achievements}
 	\begin{itemize} % [<+->]
-		\item We provide the first implementations of LP-2010 and L-2013.
-		\item We propose and implement a variant of L-2013 using HKE for the sub-computation.
+		\item We provide the first prototype implementations of LP-2010 and L-2013. We also implement HKE.
+		\item We propose and prototype a variant of L-2013 using HKE for the sub-computation.
 		\item We provide the first practical comparison of LP-2010, L-2013, HKE and our variant.
-		\item We suggest abandoning the Zero Knowledge Proof approach to consistency proving in exchange for the logarithm approach.
+		\item We suggest optimisations for LP-2010 and L-2013.
+		
+	\end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Future Work}
+	\begin{itemize} % [<+->]
+		\item Further optimisation of our implementaiton.
+		\item Change the LP-2010 and L-2013  protocols to use the Logarithm consistency?
+		\item Testing on a wider variety of circuits and with parties who have differing capabilities.
+		\item Further research into optimising HKE.
+		\item Can we reconcile some of the Lindell optimisations with HKE in the sub-computation of L-HKE? 
 		
 	\end{itemize}
 \end{frame}

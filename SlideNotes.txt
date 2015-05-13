@@ -1,0 +1,70 @@
+Slide 02 = Project Background
+- 
+
+
+Slide 03 = Project Motivation
+- Mention theoreticals can only take us so far.
+
+
+Slide 04 = Yao's Protocol
+- Very brief overview.
+- Builder and Executor, Builder makes garbled circuit. Sends to Executor.
+- Only secure if the Builder is generating circuits honestly. Executor cannot check.
+
+
+Slide 05 = Cut and Choose - Concept
+- So how can we achieve security without putting any trust in the Builder?
+- Cut and Choose, basic idea is the Builder makes many circuits.
+- Executor chooses some to be opened and checked for correctness.
+
+
+Slide 06 = Cut and Choose - Pitfall
+- Very simple conceptually but there are some nuances.
+- Coming from there being many circuits.
+- Consistency of Inputs : Making sure the parties give the same input to each circuit.
+- Output determination : What if different circuits give different results.
+
+
+Slide 07 = Lindell-Pinkas 2010
+- 
+
+
+Slide 08 = Lindell 2013
+
+
+Slide 09 = HKE 2013
+
+
+Slide 10 = L-HKE
+
+
+Slide 11 = Results - Add 1
+
+
+Slide 12 = Results - Add 2
+
+
+Slide 13 = Results - Add 3
+
+
+Slide 14 = Results - AES 1
+
+
+Slide 15 = Results - AES 2
+
+
+Slide 16 = Some Conclusions
+
+
+Slide 17 = Achievements
+
+
+Slide 18 = Future Work
+
+
+
+
+
+
+
+
