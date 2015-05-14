@@ -119,7 +119,8 @@
 \begin{frame}{Project Motivation}
 	\begin{itemize} % [<+->]
 		\item Without a good comparison of these protocols we cannot know which is the most promising for further research.
-		\item In order to run practical comparisons we need implementations to compare. For two of the three protocols our implementations are the first.
+		\item In order to run practical comparisons we need implementations to compare.
+		\item For two of the three protocols our implementations are the first.
 		\item Furthermore we broke down our results to identify the bottlenecks for each protocol to guide future optimisation
 	\end{itemize}
 \end{frame}
@@ -140,7 +141,8 @@
 
 \begin{frame}{Yao's Protocol}
 	\begin{itemize} % [<+->]
-		\item Proposed by Andrew Yao in 1986. Primarily used for Two Party computation but it can be extended to Multiparty computation.
+		\item Proposed by Andrew Yao in 1986.
+		\item Primarily used for Two Party computation but it can be extended to Multiparty computation.
 		\item The parties are labelled as the `Builder' and the `Executor'.
 		\item The Builder constructs a binary circuit representing the function and `garbles' this circuit.
 		\item Such a garbled circuit can be evaluated without revealing information about the inputs.
@@ -190,7 +192,7 @@
 \begin{frame}{Lindell-Pinkas 2010 (LP-2010)}
 	\begin{itemize} % [<+->]
 		\item Using Zero Knowledge proofs for the input consistency checks.
-		\item Half of the circuits are check circuits, the other half are evaluation circuits.
+		\item Randomly half of the circuits are chosen as check circuits, the other half are evaluation circuits.
 		\item Simply returns majority output of the evaluation circuits.
 		\item Statistical security $2^{-0.311 \cdot S}$  where $S$ is the number of circuits.
 		\item So we need $130$ circuits to achieve statistical security of $2^{-40}$.
@@ -329,6 +331,15 @@
 		\item Optimisation the sub-computation output hiding in L-HKE.
 		
 	\end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	\vspace{2.5cm}
+	\begin{center}
+		\textcolor{bristolred}{\Huge Questions?}
+	\end{center}
 \end{frame}
 
 

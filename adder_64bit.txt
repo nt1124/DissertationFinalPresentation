@@ -1,0 +1,44 @@
++++ LP 2010
+B
+CPU time  : 222.869995
+Wall time : 53.630795
+Total Bytes Sent = 15283652
+Total Bytes Received = 1424245
+E
+CPU time  : 107.419998
+Wall time : 53.695941
+Total Bytes Sent = 1424245
+Total Bytes Received = 15283652
+
++++ L 2013
+B
+CPU time  : 242.130005
+Wall time : 68.499181
+Total Bytes Sent = 7837455
+Total Bytes Received = 1193334
+E
+CPU time  : 155.240005
+Wall time : 68.572150
+Total Bytes Sent = 1193334
+Total Bytes Received = 7837455
+
++++ HKE 2013
+CPU time  : 87.010002
+Wall time : 15.717077
+Total Bytes Sent = 6233497
+Total Bytes Received = 6234129
+
+
++++ L-HKE
+B
+CPU time  : 231.490005
+Wall time : 44.587265
+Total Bytes Sent = 10096837
+Total Bytes Received = 4822410
+E
+CPU time  : 211.360001
+Wall time : 45.457290
+Total Bytes Sent = 4822410
+Total Bytes Received = 10096837
+
+

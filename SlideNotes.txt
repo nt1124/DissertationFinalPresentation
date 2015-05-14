@@ -1,4 +1,4 @@
-Slide 02 = Project Background (45 sec)
+Slide 02 = Project Background
 - What is Secure Two Party Computation?
 - Basically we have two parties who don't trust each other.
 - How can they compute a function without revealing their inputs to the other.
@@ -7,13 +7,15 @@ Slide 02 = Project Background (45 sec)
 - Our project aimed to implement and compare some of these protocols.
 
 
-Slide 03 = Project Motivation ()
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Slide 03 = Project Motivation 
 - We want to compare these protocols so we know which are more promising.
 - Allows better direction of future research.
 - This means we needed implementations. We made these ourselves as none existed.
 - Whilst we're measuring performance we identify bottlenecks for optimisation.
 
 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Slide 04 = Yao's Protocol
 - Very brief overview, a Two Party protocol.
 - Builder and Executor, Builder makes garbled circuit. Sends to Executor.
@@ -21,12 +23,14 @@ Slide 04 = Yao's Protocol
 - Only secure if the Builder is generating circuits honestly. Executor cannot check.
 
 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Slide 05 = Cut and Choose - Concept
 - So how can we achieve security without putting any trust in the Builder?
 - Cut and Choose, basic idea is the Builder makes many circuits.
 - Executor chooses some to be opened and checked for correctness.
 
 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Slide 06 = Cut and Choose - Pitfall
 - Very simple conceptually but there are some nuances.
 - Coming from there being many circuits.
@@ -34,6 +38,7 @@ Slide 06 = Cut and Choose - Pitfall
 - Output determination : What if different circuits give different results.
 
 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Slide 07 = Lindell-Pinkas 2010
 - We're going to briefly touch on each protocol so the results make sense.
 - Lindell-Pinkas is the first.
@@ -41,6 +46,7 @@ Slide 07 = Lindell-Pinkas 2010
 - Output determination is about as simple as it gets. Majority decision.
 
 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Slide 08 = Lindell 2013
 - Main difference is the idea of a sub-computation.
 - A small sub-circuit is evaluated USING LINDELL-PINKAS 2010.
@@ -49,6 +55,7 @@ Slide 08 = Lindell 2013
 - The hope is that for large circuits the trade off of main circuits for sub-circuits is worth it.
 
 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Slide 09 = HKE 2013
 - The odd one out, uses SYMMETRIC Cut and Choose.
 - Uses a knowledge of discrete logs to prove consistency.
@@ -58,6 +65,7 @@ Slide 09 = HKE 2013
 - But needs more circuits than L-2013. 92 when we take symmetric into account.
 
 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Slide 10 = L-HKE
 - A variant on the Lindell 2013 protcol.
 - Looking to answer the obvious question, changing the sub-computation protocol.
@@ -67,23 +75,27 @@ Slide 10 = L-HKE
 - So this really is a toss up. Will it be better.
 
 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Slide 11 = Results - Add 1
 - First set of general results. Note HKE is symmetric so only one set of results for it.
 - HKE runs very fast despite needing many more circuits. Maybe because sub-circuits?
 - L-2013 is best on bandwidth (just).
 
 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Slide 12 = Results - Add 2
 - Despite being much better in bandwidth terms L-2013 runs very slowly.
 - Don't write it off yet though, we expected poor performance on small circuits.
 
 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Slide 13 = Results - Add 3
 - L-HKE is showing a lot of promise in wall clock time.
 - Even on such a small circuit it beats LP-2010.
 - But uses more CPU than LP-2010.
 
 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Slide 14 = Results - AES 1
 - At first this seems to suggest that HKE is still very good.
 - However, before it was ~6 times faster thank L-2013, now only ~4 times.
@@ -91,6 +103,7 @@ Slide 14 = Results - AES 1
 - L-2013 is closing in on LP-2010, we think we're close to the tipping point here.
 
 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Slide 15 = Results - AES 2
 - L-HKE appears to be fabulous. But when we stop to think about it...
 - First of all the sub-computation's are now of equal cost.
@@ -100,6 +113,7 @@ Slide 15 = Results - AES 2
 - And I cannot think of a reason that the log approach can't work with LP-2010/L-2013.
 
 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Slide 16 = Some Conclusions
 - HKE is the best for running time.
 - But it would be interesting to see if this holds as circuit size increases.
@@ -108,6 +122,7 @@ Slide 16 = Some Conclusions
 - Input sizes are the main factors in cost. Not 'depth' of circuit.
 
 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Slide 17 = Achievements
 - The project was mostly successful, some disappointments with L-HKE.
 - Though more experiments would be good that'll always be the case.
@@ -116,12 +131,12 @@ Slide 17 = Achievements
 - And it gives a starting point for further work.
 
 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Slide 18 = Future Work
 - While we think logs will work with LP-2010 and L-2013m, this needs to be checked in depth.
 - Testing on more circuits would be good.
 - Testing in different environments would be good.
 - HKE is very good, what can be done to make it even better.
-- 
 
 
 
